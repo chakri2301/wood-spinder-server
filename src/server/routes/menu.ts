@@ -1,37 +1,41 @@
 import { Hono } from 'hono';
-import type {MenuItemRequest, UiResponse } from '@devvit/web/shared';
-import { context } from '@devvit/web/server';
-import { createPost } from '../core/post';
+import type { MenuItemRequest, UiResponse } from '@devvit/web/shared';
 
 export const menu = new Hono();
 
-menu.post('/post-create', async (c) => {
-  try {
-    const post = await createPost();
-
-    return c.json<UiResponse>(
-      {
-        navigateTo: `https://reddit.com/r/${context.subredditName}/comments/${post.id}`,
-      },
-      200
-    );
-  } catch (error) {
-    console.error(`Error creating post: ${error}`);
-    return c.json<UiResponse>(
-      {
-        showToast: 'Failed to create post',
-      },
-      400
-    );
-  }
+menu.post('/post-new-game', async (c) => {
+  return c.json<UiResponse>({
+    showForm:{
+      name:'createLevelForm',
+      form:{
+        fields:[
+          {
+            type:'string',
+            name:'title',
+            label:'Enter a title for the post'
+          },
+          {
+            type:'string',
+            name:'levelName',
+            label:'Enter a Name for level'
+          },
+          {
+            type:'paragraph',
+            name:'levelData',
+            label:'Enter Json'
+          }
+        ]
+      }
+    }
+  });
 });
 menu.post('/example-form', async (c) => {
   const _input = await c.req.json<MenuItemRequest>();
   // Server processing before showing form
   const userData = {
-    name:"Hi Chakradhari"
+    name: "Hi Chakradhari"
   }
-  
+
   return c.json<UiResponse>({
     showForm: {
       name: 'exampleForm',

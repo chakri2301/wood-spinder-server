@@ -1,6 +1,10 @@
 export type LevelData = {
   items: number,
-  type:number[],
-  data:string[],
-  end:number
+  code: string,
+  type: number[],
+  data: string[],
+  end: number
+}
+export type LevelPostData ={
+  levelName:string
 }

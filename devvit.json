@@ -10,6 +10,9 @@
       },
       "game": {
         "entry": "index.html"
+      },
+      "tutorial":{
+        "entry": "tutorial.html"
       }
     }
   },
@@ -20,23 +23,24 @@
   "menu": {
     "items": [
       {
-        "label": "Create a new post",
-        "description": "wood-spinder",
-        "location": "subreddit",
-        "forUserType": "moderator",
-        "endpoint": "/internal/menu/post-create"
-      },
-      {
         "label": "Example form",
         "description": "Show a simple form",
         "location": "subreddit",
         "forUserType": "moderator",
         "endpoint": "/internal/menu/example-form"
+      },
+      {
+        "label": "New Game",
+        "description": "New Game from JSON",
+        "location":"subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/post-new-game"
       }
     ]
   },
   "forms": {
-    "exampleForm": "/internal/form/example-submit"
+    "exampleForm": "/internal/form/example-submit",
+    "createLevelForm":"/internal/form/create-level-submit"
   },
   "triggers": {
     "onAppInstall": "/internal/triggers/on-app-install"
