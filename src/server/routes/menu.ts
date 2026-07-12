@@ -29,26 +29,3 @@ menu.post('/post-new-game', async (c) => {
     }
   });
 });
-menu.post('/example-form', async (c) => {
-  const _input = await c.req.json<MenuItemRequest>();
-  // Server processing before showing form
-  const userData = {
-    name: "Hi Chakradhari"
-  }
-
-  return c.json<UiResponse>({
-    showForm: {
-      name: 'exampleForm',
-      form: {
-        fields: [
-          {
-            type: 'string',
-            name: 'message',
-            label: 'Enter a message',
-          },
-        ],
-      },
-      data: { name: userData.name } // Pre-populate from server
-    }
-  });
-});

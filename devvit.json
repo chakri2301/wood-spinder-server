@@ -23,13 +23,6 @@
   "menu": {
     "items": [
       {
-        "label": "Example form",
-        "description": "Show a simple form",
-        "location": "subreddit",
-        "forUserType": "moderator",
-        "endpoint": "/internal/menu/example-form"
-      },
-      {
         "label": "New Game",
         "description": "New Game from JSON",
         "location":"subreddit",

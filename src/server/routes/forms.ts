@@ -6,9 +6,6 @@ import { LevelData, LevelPostData } from '../../shared/api'
 export const numberOfLevelsKey = 'numberOfLevels';
 export const levelDataKey = 'levelHset';
 export const postIdLevelkey = 'postIdHset';
-type ExampleFormValues = {
-  message?: string;
-};
 type LevelSubmitReq = {
   title?: string;
   levelName?: string;
@@ -16,19 +13,6 @@ type LevelSubmitReq = {
 }
 export const forms = new Hono();
 
-forms.post('/example-submit', async (c) => {
-  const { message } = await c.req.json<ExampleFormValues>();
-  const trimmedMessage = typeof message === 'string' ? message.trim() : '';
-
-  return c.json<UiResponse>(
-    {
-      showToast: trimmedMessage
-        ? `Form says: ${trimmedMessage}`
-        : 'Form submitted with no message',
-    },
-    200
-  );
-});
 forms.post('create-level-submit', async (c) => {
   // Total number of Levels in numberOfLevels
   // HashSet in hset levelHset 
